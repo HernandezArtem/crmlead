@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM — карточка лида</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>Карточка лида</h1>
+      <p class="subtitle">Добавление лида в CRM</p>
+    </header>
+
+    <!-- ИНТЕРФЕЙС: форма добавления лида -->
+    <form id="lead-form" class="lead-form" novalidate>
+      <div class="field">
+        <label for="name">Имя клиента <span class="required">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Иван Иванов" autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="phone">Номер телефона <span class="required">*</span></label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="+7 (900) 000-00-00"
+          inputmode="tel"
+          autocomplete="tel"
+          maxlength="18"
+        />
+      </div>
+
+      <div class="field">
+        <label for="source">Источник лида</label>
+        <select id="source" name="source">
+          <option value="Холодный">Холодный</option>
+          <option value="Тёплый">Тёплый</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="owner">Ответственный</label>
+        <select id="owner" name="owner">
+          <option value="Лидоруб">Лидоруб</option>
+          <option value="МОП">МОП</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="stage">Этап сделки</label>
+        <select id="stage" name="stage">
+          <option value="Новый лид">Новый лид</option>
+          <option value="Квалифицирован">Квалифицирован</option>
+          <option value="Назначена консультация">Назначена консультация</option>
+          <option value="Отказ">Отказ</option>
+        </select>
+      </div>
+
+      <div class="field field-toggle">
+        <label class="toggle">
+          <input type="checkbox" id="tzRequested" name="tzRequested" />
+          <span>Запрошено ТЗ</span>
+        </label>
+      </div>
+
+      <!-- Сообщение об ошибке валидации -->
+      <p id="form-error" class="form-error" hidden></p>
+
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+    <section class="leads-section">
+      <h2>Сохранённые лиды <span id="leads-count" class="badge">0</span></h2>
+      <div id="leads-list" class="leads-list"></div>
+      <p id="empty-state" class="empty-state">Пока нет лидов. Заполните форму и нажмите «Сохранить».</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
